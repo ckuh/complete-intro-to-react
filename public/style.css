@@ -113,7 +113,7 @@ a > .show-card {
   width: 30%;
   height: 0;
   padding-bottom: 19.8%;
-  overflow: hidden;
+  overflow: auto;
   margin-bottom: 3%;
 }
 
@@ -126,7 +126,7 @@ a > .show-card {
   display: block;
   float: right;
   width: 52%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .show-card-title {
