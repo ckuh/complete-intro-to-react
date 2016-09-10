@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+// components
+import Header from './Header'
+
 class Details extends Component {
   constructor (props) {
     super(props)
@@ -8,7 +11,7 @@ class Details extends Component {
   }
 
   logRoute () {
-    console.log(this.props.params.id)
+    console.log(this.props)
   }
 
   render () {
@@ -16,9 +19,7 @@ class Details extends Component {
     const { title, description, year, poster, trailer } = params
     return (
       <div className='container'>
-        <header className='header'>
-          <h1 className='brand'>svideo</h1>
-        </header>
+        <Header history={this.props.history} />
         <div className='video-info'>
           <h1 className='video-title'>{title}</h1>
           <h2 className='video-year'>({year})</h2>
@@ -36,7 +37,8 @@ class Details extends Component {
 const { object } = React.PropTypes
 
 Details.propTypes = {
-  params: object
+  params: object,
+  history: object
 }
 
 module.exports = Details

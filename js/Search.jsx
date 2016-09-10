@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // components
-const ShowCard = require('./ShowCard')
+import ShowCard from './ShowCard'
 
 class Search extends Component {
   constructor (props) {
