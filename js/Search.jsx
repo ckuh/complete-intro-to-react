@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 // components
 import ShowCard from './ShowCard'
+import Header from './Header'
 
 class Search extends Component {
   constructor (props) {
@@ -11,20 +12,22 @@ class Search extends Component {
       searchTerm: ''
     }
 
-    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
+    this.handleSearchTermChange = this.handleSearchTermChange.bind(this)
   }
 
-  handleSearchTermEvent (event) {
-    this.setState({ searchTerm: event.target.value })
+  handleSearchTermChange (searchTerm) {
+    this.setState({ searchTerm })
   }
 
   render () {
     return (
       <div className='container'>
-        <header className='header'>
-          <h1 className='brand'>svideo</h1>
-          <input value={this.state.searchTerm} className='search-input' type='text' placeholder='Search' onChange={this.handleSearchTermEvent} />
-        </header>
+        <Header
+          handleSearchTermChange={this.handleSearchTermChange}
+          searchTerm={this.state.searchTerm}
+          showSearch
+        />
+
         <div className='shows'>
           {this.props.route.shows
             .filter((show) => show.title.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)

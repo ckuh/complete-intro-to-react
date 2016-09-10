@@ -19,7 +19,7 @@ class Details extends Component {
     const { title, description, year, poster, trailer } = params
     return (
       <div className='container'>
-        <Header history={this.props.history} />
+        <Header history={this.props.history} showSearch={false} />
         <div className='video-info'>
           <h1 className='video-title'>{title}</h1>
           <h2 className='video-year'>({year})</h2>
