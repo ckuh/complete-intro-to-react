@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+// store
+const { connector } = require('./Store')
+
 class Header extends Component {
   constructor (props) {
     super(props)
-
-    this.state = {
-      searchTerm: ''
-    }
 
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
   }
 
   handleSearchTermEvent (event) {
-    this.props.handleSearchTermChange(event.target.value)
+    this.props.setSearchTerm(event.target.value)
   }
+
   render () {
     let utilSpace
     if (this.props.showSearch) {
@@ -46,7 +46,7 @@ const { string, bool, func } = React.PropTypes
 Header.propTypes = {
   showSearch: bool,
   searchTerm: string,
-  handleSearchTermChange: func
+  setSearchTerm: func
 }
 
-module.exports = Header
+module.exports = connector(Header)

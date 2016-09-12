@@ -9,6 +9,10 @@ const Search = require('./Search')
 const Layout = require('./Layout')
 const Details = require('./Details')
 
+// store
+const { store } = require('./Store')
+const { Provider } = require('react-redux')
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -30,13 +34,15 @@ class App extends Component {
 
   render () {
     return (
-      <Router history={hashHistory}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Landing} />
-          <Route path='/search' component={Search} shows={shows} />
-          <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
-        </Route>
-      </Router>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path='/' component={Layout}>
+            <IndexRoute component={Landing} />
+            <Route path='/search' component={Search} shows={shows} />
+            <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
+          </Route>
+        </Router>
+      </Provider>
     )
   }
 }
